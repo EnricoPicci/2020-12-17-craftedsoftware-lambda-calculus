@@ -19,7 +19,24 @@
             "runtimeArgs": ["--nolazy", "-r", "ts-node/register"],
             "sourceMaps": true,
             "cwd": "${workspaceRoot}",
-            "protocol": "inspector"
+            "protocol": "inspector",
+            // "resolveSourceMapLocations": [
+            //     "${workspaceFolder}/**",
+            //     "!**/node_modules/**"
+            // ]
+        },
+        {
+            "name": "PWA-Nod Current TS File",
+            "type": "pwa-node",
+            "request": "launch",
+            "args": ["${relativeFile}"],
+            "runtimeArgs": ["--nolazy", "-r", "ts-node/register"],
+            "sourceMaps": true,
+            "cwd": "${workspaceRoot}",
+            "resolveSourceMapLocations": [
+                "${workspaceFolder}/**",
+                "!**/node_modules/**"
+            ]
         },
         {
             "name": "Current TS Test File",
