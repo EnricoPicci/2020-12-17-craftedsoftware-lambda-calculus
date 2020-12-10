@@ -1,5 +1,17 @@
 import { expect } from 'chai';
-import { church_1, church_2, church_3, mult, numberJs, power, sum } from './church-numbers';
+import {
+    church_0,
+    church_1,
+    church_2,
+    church_3,
+    church_4,
+    mult,
+    numberJs,
+    power,
+    pred,
+    sub,
+    sum,
+} from './church-numbers';
 
 describe(`Test arithmetic functions on Church encoded natural numbers`, () => {
     it(`1 + 3 should be 4`, () => {
@@ -16,5 +28,40 @@ describe(`Test arithmetic functions on Church encoded natural numbers`, () => {
         const result = power(church_3)(church_2);
         const resJs = numberJs(result);
         expect(resJs).eq(8);
+    });
+    it(`predecessor of 3 should be 2`, () => {
+        const result = pred(church_3);
+        const resJs = numberJs(result);
+        expect(resJs).eq(2);
+    });
+    it(`predecessor of 1 should be 0`, () => {
+        const result = pred(church_1);
+        const resJs = numberJs(result);
+        expect(resJs).eq(0);
+    });
+    it(`predecessor of 0 should be 0`, () => {
+        const result = pred(church_0);
+        const resJs = numberJs(result);
+        expect(resJs).eq(0);
+    });
+    it(`3 - 1 should be 2`, () => {
+        const result = sub(church_3)(church_1);
+        const resJs = numberJs(result);
+        expect(resJs).eq(2);
+    });
+    it(`3 - 0 should be 3`, () => {
+        const result = sub(church_3)(church_0);
+        const resJs = numberJs(result);
+        expect(resJs).eq(3);
+    });
+    it(`3 - 4 should be 0`, () => {
+        const result = sub(church_3)(church_4);
+        const resJs = numberJs(result);
+        expect(resJs).eq(0);
+    });
+    it(`0 - 4 should be 0`, () => {
+        const result = sub(church_3)(church_4);
+        const resJs = numberJs(result);
+        expect(resJs).eq(0);
     });
 });

@@ -1,3 +1,5 @@
+import { first, newPair, Pair } from './pair';
+
 // Church encoded natural number type definition
 export type ChurchNumber = (f: (x: any) => any) => (x: any) => any;
 
@@ -9,6 +11,11 @@ export const mult = (n: ChurchNumber) => (m: ChurchNumber) => (f: (x: any) => an
     n(m(f))(x) as ChurchNumber;
 export const power = (n: ChurchNumber) => (m: ChurchNumber) => (f: (x: any) => any) => (x: any) =>
     n(m)(f)(x) as ChurchNumber;
+
+// Sutraction implemented using pairs
+const nextPair = (pair: Pair<ChurchNumber, ChurchNumber>) => pair((_x) => (y) => newPair(y)(succ(y)));
+export const pred = (n: ChurchNumber) => n(nextPair)(newPair(church_0)(church_0))(first) as ChurchNumber;
+export const sub = (n: ChurchNumber) => (m: ChurchNumber) => m(pred)(n);
 
 // first 10 natural numbers
 export const church_0: ChurchNumber = (_f) => (x) => x;
