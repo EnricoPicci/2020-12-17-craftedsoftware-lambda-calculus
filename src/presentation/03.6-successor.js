@@ -1,5 +1,5 @@
 // run the example with the command
-// node ./src/numbers/03.6-successor.js
+// node ./src/presentation/03.6-successor.js
 
 let three = f => x => f(f(f(x)))
 

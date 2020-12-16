@@ -1,5 +1,5 @@
 // run the example with the command
-// node ./src/numbers/09.4-pairs.js
+// node ./src/presentation/09.4-pairs.js
 
 succ = n => f => x => f(n(f)(x))
 let zero = (f) => (x) => x;

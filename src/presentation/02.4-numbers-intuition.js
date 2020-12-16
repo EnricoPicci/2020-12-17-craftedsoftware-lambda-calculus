@@ -2,7 +2,7 @@
 // with strings of variable length
 //
 // run the example with the command
-// node ./src/numbers/02.4-numbers-intuition.js
+// node ./src/presentation/02.4-numbers-intuition.js
 
 let zero = (f) => (x) => x; // in lambda calculus this is λf.λx.x
 let one = (f) => (x) => f(x); // in lambda calculus this is λf.λx.fx

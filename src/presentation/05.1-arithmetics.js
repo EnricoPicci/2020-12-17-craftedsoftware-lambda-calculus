@@ -1,5 +1,5 @@
 // run the example with the command
-// node ./src/numbers/05.1-arithmetics.js
+// node ./src/presentation/05.1-arithmetics.js
 
 let two = f => x => f(f(x))  
 let three = f => x => f(f(f(x)))  

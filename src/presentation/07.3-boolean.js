@@ -1,5 +1,5 @@
 // run the example with the command
-// node ./src/numbers/07.1-boolean.js
+// node ./src/presentation/07.1-boolean.js
 
 let ifThenElse = cond => then => else_ => cond ? then : else_
 

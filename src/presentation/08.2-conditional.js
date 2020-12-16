@@ -1,5 +1,5 @@
 // run the example with the command
-// node ./src/numbers/08.2-conditional.js
+// node ./src/presentation/08.2-conditional.js
 
 TRUE = x => y => x
 FALSE = x => y => y

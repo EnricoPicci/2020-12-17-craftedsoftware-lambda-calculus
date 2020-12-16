@@ -1,5 +1,5 @@
 // run the example with the command
-// node ./src/numbers/08.5-conditional.js
+// node ./src/presentation/08.5-conditional.js
 
 f = x => x + 1
 x = 0
