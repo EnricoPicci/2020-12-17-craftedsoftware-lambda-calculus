@@ -5,32 +5,13 @@ var f Lambda = func(x interface{}) interface{} {
 }
 var x = 0
 
-// Lambda is a lambda function
-type Lambda func(x interface{}) interface{}
-
 // ChurchNumber are Church encoded numbers
 type ChurchNumber func(f interface{}) Lambda
-
-type nm func(n ChurchNumber) ChurchNumber
-type xl func(f interface{}) Lambda
-type nxl func(n ChurchNumber) xl
 
 // Zero is 0
 var Zero ChurchNumber = func(f interface{}) Lambda {
 	return func(x interface{}) interface{} {
 		return x
-	}
-}
-
-var one = func(f interface{}) Lambda {
-	return func(x interface{}) interface{} {
-		return f.(Lambda)(Zero(f)(x))
-	}
-}
-var two = func(f interface{}) Lambda {
-	return func(x interface{}) interface{} {
-		_f := f.(Lambda)
-		return _f(_f(Zero(f)(x)))
 	}
 }
 
