@@ -12,7 +12,8 @@ type Lambda func(x interface{}) interface{}
 type ChurchNumber func(f interface{}) Lambda
 
 type nm func(n ChurchNumber) ChurchNumber
-type fl func(f Lambda) Lambda
+type xl func(f interface{}) Lambda
+type nxl func(n ChurchNumber) xl
 
 // Zero is 0
 var Zero ChurchNumber = func(f interface{}) Lambda {
@@ -42,6 +43,9 @@ var Succ = func(n ChurchNumber) ChurchNumber {
 				fChurch := f.(func(ChurchNumber) ChurchNumber)
 				xChurch := x.(ChurchNumber)
 				return fChurch(n(fChurch)(xChurch).(ChurchNumber))
+			case ChurchNumber:
+				l := x.(Lambda)
+				return f.(ChurchNumber)(n(f)(l))
 			default:
 				return f.(Lambda)(n(f)(x))
 			}
@@ -53,5 +57,23 @@ var Succ = func(n ChurchNumber) ChurchNumber {
 var Sum = func(n ChurchNumber) nm {
 	return func(m ChurchNumber) ChurchNumber {
 		return m(Succ)(n).(ChurchNumber)
+	}
+}
+
+// Mult is the multiplication function
+var Mult = func(n ChurchNumber) nm {
+	return func(m ChurchNumber) ChurchNumber {
+		return func(f interface{}) Lambda {
+			return n(m(f))
+		}
+	}
+}
+
+// Pow is the power function
+var Pow = func(n ChurchNumber) nxl {
+	return func(m ChurchNumber) xl {
+		return func(f interface{}) Lambda {
+			return n(m)(f).(Lambda)
+		}
 	}
 }
