@@ -10,3 +10,4 @@ type lx func(f Lambda) interface{}
 type xlx func(x interface{}) lx
 type xx func(x interface{}) interface{}
 type xxx func(x interface{}) xx
+type pq func(p ChurchBoolean) ChurchBoolean

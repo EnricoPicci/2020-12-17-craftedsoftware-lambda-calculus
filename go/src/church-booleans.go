@@ -21,3 +21,17 @@ var F ChurchBoolean = func(x interface{}) xx {
 var Not = func(p ChurchBoolean) xxx {
 	return Flip(p)
 }
+
+// And is the boolean and
+var And = func(p ChurchBoolean) pq {
+	return func(q ChurchBoolean) ChurchBoolean {
+		return p(q)(p).(ChurchBoolean)
+	}
+}
+
+// Or is the boolean and
+var Or = func(p ChurchBoolean) pq {
+	return func(q ChurchBoolean) ChurchBoolean {
+		return p(p)(q).(ChurchBoolean)
+	}
+}
