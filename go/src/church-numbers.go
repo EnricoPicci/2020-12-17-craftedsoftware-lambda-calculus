@@ -27,6 +27,10 @@ var Succ = func(n ChurchNumber) ChurchNumber {
 			case ChurchNumber:
 				l := x.(Lambda)
 				return f.(ChurchNumber)(n(f)(l))
+			case func(Pair) Pair:
+				fp := f.(func(Pair) Pair)
+				xp := x.(Pair)
+				return fp(n(fp)(xp).(Pair))
 			default:
 				return f.(Lambda)(n(f)(x))
 			}
@@ -62,4 +66,16 @@ var Pow = func(n ChurchNumber) nxl {
 // IsZero returns true if the number is zero, false otherwise
 var IsZero = func(n ChurchNumber) ChurchBoolean {
 	return n(Constant(F))(T).(ChurchBoolean)
+}
+
+// nextPair returns a new pair where the first parameter is the second parameter of the original pair
+// and the second parameter is the successor of the second parameter of the original pair
+var nextPair = func(p Pair) Pair {
+	return Tuple2Struct(p(Second))(Succ(p(Second).(ChurchNumber)))
+}
+
+// Prev is the previous number
+var Prev = func(n ChurchNumber) ChurchNumber {
+	p00 := Tuple2Struct(Zero)(Zero)
+	return n(nextPair)(p00).(Pair)(First).(ChurchNumber)
 }

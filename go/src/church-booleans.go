@@ -1,24 +1,16 @@
 package lambdacalculus
 
 // ChurchBoolean are Church encoded booleans
-type ChurchBoolean xxx
+type ChurchBoolean xl
 
 // T is boolean true
-var T ChurchBoolean = func(x interface{}) Lambda {
-	return func(y interface{}) interface{} {
-		return x
-	}
-}
+var T ChurchBoolean = First
 
 // F is boolean false
-var F ChurchBoolean = func(x interface{}) Lambda {
-	return func(y interface{}) interface{} {
-		return y
-	}
-}
+var F ChurchBoolean = Second
 
 // Not is the boolean not
-var Not = func(p ChurchBoolean) xxx {
+var Not = func(p ChurchBoolean) xl {
 	return Flip(p)
 }
 

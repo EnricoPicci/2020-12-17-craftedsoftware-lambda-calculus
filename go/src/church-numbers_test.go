@@ -160,3 +160,47 @@ func TestIsZero_1(t *testing.T) {
 		t.Errorf("IsZero of one should be false instead is %v", res)
 	}
 }
+
+func TestNextPair(t *testing.T) {
+	p00 := Tuple2Struct(Zero)(Zero)
+	resFirst := nextPair(p00)(First).(ChurchNumber)(f)(x)
+	if resFirst != 0 {
+		t.Errorf("The first element of the pair should be 0 instead is %v", resFirst)
+	}
+	resSecond := nextPair(p00)(Second).(ChurchNumber)(f)(x)
+	if resSecond != 1 {
+		t.Errorf("The first element of the pair should be 1 instead is %v", resSecond)
+	}
+}
+
+func TestNextPairRepeated(t *testing.T) {
+	p00 := Tuple2Struct(Zero)(Zero)
+	nextP := nextPair(nextPair(nextPair(nextPair(p00))))
+	resFirst := nextP(First).(ChurchNumber)(f)(x)
+	if resFirst != 3 {
+		t.Errorf("The first element of the pair should be 3 instead is %v", resFirst)
+	}
+	resSecond := nextP(Second).(ChurchNumber)(f)(x)
+	if resSecond != 4 {
+		t.Errorf("The first element of the pair should be 4 instead is %v", resSecond)
+	}
+}
+
+func TestPrev(t *testing.T) {
+	res := Prev(three)(f)(x)
+	if res != 2 {
+		t.Errorf("Predecessor of three should be 2")
+	}
+}
+func TestPrevPrev(t *testing.T) {
+	res := Prev(Prev(three))(f)(x)
+	if res != 1 {
+		t.Errorf("Predecessor of Predecessor of three should be 1")
+	}
+}
+func TestPrev0(t *testing.T) {
+	res := Prev(Prev(Prev(Prev(three))))(f)(x)
+	if res != 0 {
+		t.Errorf("Predecessor can not go below zero")
+	}
+}

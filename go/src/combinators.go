@@ -1,7 +1,7 @@
 package lambdacalculus
 
 // Flip flips the order in which parameters are passed to a function
-var Flip = func(f interface{}) xxx {
+var Flip = func(f interface{}) xl {
 	return func(x interface{}) Lambda {
 		return func(y interface{}) interface{} {
 			switch f.(type) {
@@ -24,5 +24,15 @@ var Flip = func(f interface{}) xxx {
 var Constant = func(x interface{}) Lambda {
 	return func(y interface{}) interface{} {
 		return x
+	}
+}
+
+// First is a function which returns always the first parameter
+var First = Constant
+
+// Second is a function which returns always the second parameter
+var Second = func(x interface{}) Lambda {
+	return func(y interface{}) interface{} {
+		return y
 	}
 }

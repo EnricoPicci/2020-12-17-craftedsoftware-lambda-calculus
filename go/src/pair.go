@@ -1,10 +1,13 @@
 package lambdacalculus
 
-// Pair is a 2-tuple
-var Pair = func(x interface{}) xlx {
-	return func(y interface{}) lx {
-		return func(f Lambda) interface{} {
-			return f(x).(Lambda)(y)
+// Pair represents a pair
+type Pair fxlx
+
+// Tuple2Struct is a 2-tuple structure
+var Tuple2Struct = func(x interface{}) xp {
+	return func(y interface{}) Pair {
+		return func(f xl) interface{} {
+			return f(x)(y)
 		}
 	}
 }
