@@ -58,3 +58,8 @@ var Pow = func(n ChurchNumber) nxl {
 		}
 	}
 }
+
+// IsZero returns true if the number is zero, false otherwise
+var IsZero = func(n ChurchNumber) ChurchBoolean {
+	return n(Constant(F))(T).(ChurchBoolean)
+}

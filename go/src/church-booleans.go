@@ -4,14 +4,14 @@ package lambdacalculus
 type ChurchBoolean xxx
 
 // T is boolean true
-var T ChurchBoolean = func(x interface{}) xx {
+var T ChurchBoolean = func(x interface{}) Lambda {
 	return func(y interface{}) interface{} {
 		return x
 	}
 }
 
 // F is boolean false
-var F ChurchBoolean = func(x interface{}) xx {
+var F ChurchBoolean = func(x interface{}) Lambda {
 	return func(y interface{}) interface{} {
 		return y
 	}

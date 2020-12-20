@@ -146,3 +146,17 @@ func TestPow_3_4(t *testing.T) {
 		t.Errorf("Power of three to four should be 81 instead is %v", res)
 	}
 }
+
+func TestIsZero_0(t *testing.T) {
+	res := IsZero(Zero)(true)(false)
+	if !res.(bool) {
+		t.Errorf("IsZero of zero should be true instead is %v", res)
+	}
+}
+
+func TestIsZero_1(t *testing.T) {
+	res := IsZero(one)(true)(false)
+	if res.(bool) {
+		t.Errorf("IsZero of one should be false instead is %v", res)
+	}
+}
