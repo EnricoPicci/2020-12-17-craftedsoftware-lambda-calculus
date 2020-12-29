@@ -14,16 +14,13 @@ export type ListConst<T> = BinaryFunction<T, List<T>, List<T>>;
 export type Head<T> = UnaryFunction<List<T>, T>;
 export type Tail<T> = UnaryFunction<List<T>, List<T>>;
 export type IsEmptyChecker = BinaryFunction<any, any, ChurchBoolean>;
-export type ListSelector<T> = Head<T> | Tail<T> | IsEmptyChecker;
-// export type ListSelector<T> = BinaryFunction<T, List<T>, T | List<T>>;
+export type ListSelector<T> = BinaryFunction<T, List<T>, T | List<T>>;
 
 // Type of the ElementAt
 export type ElementAt<T> = (n: ChurchNumber) => (l: List<T>) => List<T>;
 
 // the empty list
 export const emptyList: List<any> = (_f) => church_true;
-// generic Constructor for a List
-export const newList: ListConst<any> = (x) => (y) => (s: ListSelector<any>) => s(x)(y);
 
 // Functions operating on Lists
 export const isEmpty = (l: List<any>) => l((_h: any) => (_t: any) => church_false);

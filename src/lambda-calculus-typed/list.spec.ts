@@ -9,9 +9,9 @@ describe(`when a list is empty`, () => {
         const resJs = boolJs(result);
         expect(resJs).eq(true);
     });
-    it(`it should result empty`, () => {
-        const result = isEmpty(emptyList);
-        const resJs = boolJs(result);
+    it(`its value should be true`, () => {
+        const val = value(emptyList);
+        const resJs = boolJs(val);
         expect(resJs).eq(true);
     });
     it(`its next element should be the empty list`, () => {

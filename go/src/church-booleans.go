@@ -15,14 +15,14 @@ var Not = func(p ChurchBoolean) xl {
 }
 
 // And is the boolean and
-var And = func(p ChurchBoolean) pq {
+var And = func(p ChurchBoolean) bb {
 	return func(q ChurchBoolean) ChurchBoolean {
 		return p(q)(p).(ChurchBoolean)
 	}
 }
 
 // Or is the boolean and
-var Or = func(p ChurchBoolean) pq {
+var Or = func(p ChurchBoolean) bb {
 	return func(q ChurchBoolean) ChurchBoolean {
 		return p(p)(q).(ChurchBoolean)
 	}

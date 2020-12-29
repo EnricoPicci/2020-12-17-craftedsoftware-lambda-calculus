@@ -12,7 +12,8 @@ type xfxlx func(x interface{}) fxlx
 // types depending on specific types
 type nm func(n ChurchNumber) ChurchNumber
 type nxl func(n ChurchNumber) xl
-type pq func(p ChurchBoolean) ChurchBoolean
+type bb func(p ChurchBoolean) ChurchBoolean
+type xb func(x interface{}) ChurchBoolean
 type xp func(x interface{}) Pair
 
 // types exploded
