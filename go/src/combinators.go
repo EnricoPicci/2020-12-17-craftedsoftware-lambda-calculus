@@ -4,17 +4,15 @@ package lambdacalculus
 var Flip = func(f interface{}) xl {
 	return func(x interface{}) Lambda {
 		return func(y interface{}) interface{} {
-			switch f.(type) {
+			switch f := f.(type) {
 			case func(n ChurchNumber) nxl:
-				fxy := f.(func(n ChurchNumber) nxl)
 				xChurch := x.(ChurchNumber)
 				yChurch := y.(ChurchNumber)
-				return fxy(yChurch)(xChurch)
+				return f(yChurch)(xChurch)
 			case ChurchBoolean:
-				fChurch := f.(ChurchBoolean)
-				return fChurch(y)(x)
+				return f(y)(x)
 			default:
-				return f.(Lambda)(y).(Lambda)(x)
+				return f.(Lambda)(x)
 			}
 		}
 	}
