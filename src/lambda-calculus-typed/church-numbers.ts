@@ -1,3 +1,4 @@
+import { church_false, church_true } from './church-booleans';
 import { first, newPair, Pair } from './pair';
 
 // Church encoded natural number type definition
@@ -16,6 +17,9 @@ export const power = (n: ChurchNumber) => (m: ChurchNumber) => (f: (x: any) => a
 const nextPair = (pair: Pair<ChurchNumber, ChurchNumber>) => pair((_x) => (y) => newPair(y)(succ(y)));
 export const pred = (n: ChurchNumber) => n(nextPair)(newPair(church_0)(church_0))(first) as ChurchNumber;
 export const sub = (n: ChurchNumber) => (m: ChurchNumber) => m(pred)(n);
+
+const always_false = ((x) => (_y: any) => x)(church_false);
+export const isZero = (n: ChurchNumber) => n(always_false)(church_true);
 
 // first 10 natural numbers
 export const church_0: ChurchNumber = (_f) => (x) => x;

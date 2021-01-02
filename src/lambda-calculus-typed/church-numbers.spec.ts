@@ -1,10 +1,12 @@
 import { expect } from 'chai';
+import { boolJs } from './church-booleans';
 import {
     church_0,
     church_1,
     church_2,
     church_3,
     church_4,
+    isZero,
     mult,
     numberJs,
     power,
@@ -63,5 +65,18 @@ describe(`Test arithmetic functions on Church encoded natural numbers`, () => {
         const result = sub(church_3)(church_4);
         const resJs = numberJs(result);
         expect(resJs).eq(0);
+    });
+});
+
+describe(`When using isZero`, () => {
+    it(`with 0 it should return true`, () => {
+        const result = isZero(church_0);
+        const resJs = boolJs(result);
+        expect(resJs).to.be.true;
+    });
+    it(`with  number not 0 it should return false`, () => {
+        const result = isZero(church_3);
+        const resJs = boolJs(result);
+        expect(resJs).to.be.false;
     });
 });

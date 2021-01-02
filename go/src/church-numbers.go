@@ -19,18 +19,16 @@ var Zero ChurchNumber = func(f interface{}) Lambda {
 var Succ = func(n ChurchNumber) ChurchNumber {
 	return func(f interface{}) Lambda {
 		return func(x interface{}) interface{} {
-			switch f.(type) {
+			switch f := f.(type) {
 			case func(ChurchNumber) ChurchNumber:
-				fChurch := f.(func(ChurchNumber) ChurchNumber)
 				xChurch := x.(ChurchNumber)
-				return fChurch(n(fChurch)(xChurch).(ChurchNumber))
+				return f(n(f)(xChurch).(ChurchNumber))
 			case ChurchNumber:
 				l := x.(Lambda)
-				return f.(ChurchNumber)(n(f)(l))
+				return f(n(f)(l))
 			case func(Pair) Pair:
-				fp := f.(func(Pair) Pair)
 				xp := x.(Pair)
-				return fp(n(fp)(xp).(Pair))
+				return f(n(f)(xp).(Pair))
 			default:
 				return f.(Lambda)(n(f)(x))
 			}
@@ -78,4 +76,11 @@ var nextPair = func(p Pair) Pair {
 var Prev = func(n ChurchNumber) ChurchNumber {
 	p00 := Tuple2Struct(Zero)(Zero)
 	return n(nextPair)(p00).(Pair)(First).(ChurchNumber)
+}
+
+// Sub subtracts m from n
+var Sub = func(n ChurchNumber) nm {
+	return func(m ChurchNumber) ChurchNumber {
+		return m(Prev)(n).(ChurchNumber)
+	}
 }

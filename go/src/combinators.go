@@ -35,22 +35,13 @@ var Second = func(x interface{}) Lambda {
 	}
 }
 
-// (x) => g((v) => x(x)(v))
-// var gArg := func(v interface{}) {
-// 	return x(x)(v)
-// }
-// Z combinator
-// export const Z = (g: LambdaFunction) => ((x) => g((v) => x(x)(v))) ((x) => g((v) => x(x)(v)));
-// export const Z = (g: LambdaFunction) =>
-//                    ((x) => g((v: any) => x(x)(v)))
-//                    ((x: (arg0: any) => { (arg0: any): any; new(): any; }) => g((v: any) => x(x)(v)));
-
-// var Z = func (g Lambda) {
-// 	fZ := func(x interface{}) {
-// 		gArg := func(v interface{}) {
-// 			return x(x)(v)
-// 		}
-// 		return g(gArg)
-// 	}
-// 	return fZ(fZ)
-// }
+// Z implements the Z combinator
+var Z = func(g Lambda) interface{} {
+	fZ := func(x interface{}) interface{} {
+		gArg := func(v interface{}) interface{} {
+			return (x.(Lambda)(x)).(Lambda)(v)
+		}
+		return g(gArg)
+	}
+	return fZ(fZ)
+}

@@ -46,6 +46,16 @@
             "args": ["-r", "ts-node/register", "${relativeFile}"],
             "cwd": "${workspaceRoot}",
             "protocol": "inspector"
-        }
+        },
+        {
+            "name": "GO Launch",
+            "type": "go",
+            "request": "launch",
+            "mode": "auto",
+            "program": "${fileDirname}",
+            "env": {},
+            //"envFile": "${workspaceFolder}/server/.env-prod",
+            "args": []
+          }
     ]
 }

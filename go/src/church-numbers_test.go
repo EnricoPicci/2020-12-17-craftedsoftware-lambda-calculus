@@ -204,3 +204,24 @@ func TestPrev0(t *testing.T) {
 		t.Errorf("Predecessor can not go below zero")
 	}
 }
+
+func TestSub_4_3(t *testing.T) {
+	res := Sub(four)(three)(f)(x)
+	if res != 1 {
+		t.Errorf("Suf of four - four should be 1 instead is %v", res)
+	}
+}
+
+func TestSub_2_2(t *testing.T) {
+	res := Sub(two)(two)(f)(x)
+	if res != 0 {
+		t.Errorf("Suf of two - two should be 0 instead is %v", res)
+	}
+}
+
+func TestSub_4_0(t *testing.T) {
+	res := Sub(four)(Zero)(f)(x)
+	if res != 4 {
+		t.Errorf("Suf of four - zero should be 4 instead is %v", res)
+	}
+}

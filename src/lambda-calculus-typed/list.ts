@@ -29,6 +29,10 @@ export const value: Head<any> = (l) => l(first);
 export const next: Tail<any> = (l) => isEmpty(l)(emptyList)(l(second));
 export const elementAt: ElementAt<any> = (n) => (l) => n(next)(l);
 
+// F_listSize and F_lastElement are implemented passing 2 functions as parameters to "isEmpty(l)"
+// we pass functions instead of values, to avoid Javascript (given its eager nature) to evaluate the expressions returning the values
+// the second of these expressions, i.e. the one that is returned by "isEmpty(l)" when the list is not empty, contains a reference
+// to the function "f" passed as parameter, which is what causes the infinte loop
 const F_listSize = (f: LambdaFunction) => (l: List<any>) => (n: ChurchNumber) =>
     isEmpty(l)((n: ChurchNumber) => n)((n: ChurchNumber) => f(next(l))(succ(n)))(n);
 const _listSize = Z(F_listSize);
